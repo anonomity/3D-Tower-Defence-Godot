@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://wks08elmt6q"]
+
+[ext_resource type="Script" path="res://scripts/Alien.gd" id="1_ch7q4"]
+[ext_resource type="PackedScene" uid="uid://5ldvaxfos8rc" path="res://scenes/core.tscn" id="2_sj2sn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgeu7"]
+albedo_color = Color(0.584314, 0.0470588, 0.0431373, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3cokf"]
+material = SubResource("StandardMaterial3D_qgeu7")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o0lds"]
+
+[node name="Alien" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_ch7q4")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 2.15
+debug_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3cokf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_o0lds")
+
+[node name="CORE" parent="." instance=ExtResource("2_sj2sn")]
+transform = Transform3D(0.43, 0, 0, 0, 0.43, 0, 0, 0, 0.43, 0, 0, 0.883801)
+visible = false

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://wl71j282kbwa"]
+
+[ext_resource type="Script" path="res://scripts/turret_1.gd" id="1_odju3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewj7i"]
+albedo_color = Color(0.192157, 0.376471, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_75e11"]
+material = SubResource("StandardMaterial3D_ewj7i")
+size = Vector3(1, 2.355, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i44ua"]
+size = Vector3(0.17, 0.115, 0.82)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d4cou"]
+top_radius = 6.0
+bottom_radius = 6.0
+height = 1.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o3rp0"]
+points = PackedVector3Array(1.0468, 0.5, 5.5873, -1.14174, -0.595126, -6.09405, -1.90409, -0.595126, -5.90316, 1.90409, -0.595126, 5.90316, 5.41229, 0.5, -1.74576, -5.5873, 0.5, -1.0468, -5.33169, -0.595126, 3.23672, 6.09405, -0.595126, 1.14174, -1.0468, 0.5, -5.5873, 3.80818, -0.595126, -4.95111, -3.49152, 0.5, 4.53941, -5.33169, -0.595126, -3.23672, 4.53941, 0.5, 3.49152, -1.90409, -0.595126, 5.90316, 2.2697, 0.5, -5.23728, -3.49152, 0.5, -4.53941, 5.71227, -0.595126, -2.47556, 3.80818, -0.595126, 4.95111, -5.23728, 0.5, 2.2697, -6.09405, -0.595126, 1.14174, 4.53941, 0.5, -3.49152, 1.14174, -0.595126, -6.09405, 5.5873, 0.5, 1.0468, 5.33169, -0.595126, 3.23672, -1.0468, 0.5, 5.5873, 2.96757, 0.5, 4.88834, -3.80818, -0.595126, 4.95111, -3.80818, -0.595126, -4.95111, -6.09405, -0.595126, -1.14174, -4.53941, 0.5, -3.49152, 6.09405, -0.595126, -1.14174, -1.14174, -0.595126, 6.09405)
+
+[node name="Turret_1" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13473, 0)
+mesh = SubResource("BoxMesh_75e11")
+script = ExtResource("1_odju3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.846956, 0.560793)
+mesh = SubResource("BoxMesh_i44ua")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.858444, 1.04084)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.00876)
+collision_mask = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+visible = false
+mesh = SubResource("CylinderMesh_d4cou")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("ConvexPolygonShape3D_o3rp0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="bullet" type="Node3D" parent="."]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

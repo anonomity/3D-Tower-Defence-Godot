@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvsw8wkytfr8o"]
+
+[ext_resource type="Script" path="res://scripts/podium.gd" id="1_u2pi0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yfyd1"]
+size = Vector3(1.9, 0.41, 1.93)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_62eqk"]
+points = PackedVector3Array(-0.896247, -0.205, -0.910295, 0.948612, 0.205, 0.963991, 0.895759, -0.205, 0.910295, 0.948612, 0.205, -0.963991, -0.9491, 0.205, 0.963991, -0.9491, 0.205, -0.963991, 0.895759, -0.205, -0.910295, -0.896247, -0.205, 0.910295)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cubbv"]
+radius = 1.66574
+
+[sub_resource type="BoxMesh" id="BoxMesh_eryjs"]
+
+[node name="podium" type="StaticBody3D"]
+input_capture_on_drag = true
+script = ExtResource("1_u2pi0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_yfyd1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_62eqk")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26161, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_cubbv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.855066)
+mesh = SubResource("BoxMesh_eryjs")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]

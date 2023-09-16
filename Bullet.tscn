@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://t3354n3f4atj"]
+
+[ext_resource type="Script" path="res://scripts/Bullet.gd" id="1_i4qlw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7q4u"]
+albedo_color = Color(0.156863, 0.321569, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2lklf"]
+material = SubResource("StandardMaterial3D_j7q4u")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v7if4"]
+points = PackedVector3Array(-0.0182264, -0.0978172, 0.0092536, 0.0184367, 0.0977701, 0.00924919, 0.0184406, 0.0977912, -0.00905118, 0.0980397, -0.0183493, 0.00314863, -0.0182333, -0.00915705, -0.097754, -0.0665736, 0.015154, 0.0728504, 0.0396747, -0.00608695, 0.0914615, -0.0942667, 0.0182516, -0.0272869, 0.0606778, -0.0242349, -0.0756223, 0.0272855, 0.0664683, -0.0693973, -0.0816562, -0.0545105, -0.0180575, 0.085236, 0.0516836, 0.00617706, -0.0575543, 0.0789133, -0.02114, 0.0182662, -0.0817099, -0.0543796, 0.0274191, -0.0789513, 0.0547571, 0.0061745, 0.0790257, 0.0608831, -0.0420828, -0.0542485, 0.0724376, 0.0608918, -0.0790369, -0.00597537, -0.0605471, 0.0242626, -0.0757089, -0.051196, -0.0543012, -0.0662598, -0.060296, 0.0724865, 0.0333064, -0.0942594, -0.0121668, 0.030536, 0.072556, 0.045259, 0.0514112, 0.0788523, -0.0333037, 0.0515831, 0.0820627, 0.0242712, -0.0515047, -0.0212139, 0.0243669, 0.0945147, -0.015077, 0.0667749, -0.0727609, 0.033461, 0.0242746, -0.0909156, -0.0663742, -0.0695035, 0.027288, -0.00903574, -0.0305034, 0.0946682, -0.091133, 0.0364894, 0.0183352, 0.00923653, -0.0395789, -0.0912272)
+
+[node name="Bullet" type="Area3D"]
+collision_mask = 2
+script = ExtResource("1_i4qlw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_2lklf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_v7if4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

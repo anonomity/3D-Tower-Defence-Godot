@@ -1,0 +1,164 @@
+[gd_scene load_steps=22 format=3 uid="uid://bdlfotteb7ne3"]
+
+[ext_resource type="PackedScene" uid="uid://m084dkwyjnyp" path="res://scenes/Camera.tscn" id="1_67q7e"]
+[ext_resource type="Script" path="res://scripts/Aliens.gd" id="2_q27mo"]
+[ext_resource type="PackedScene" uid="uid://wks08elmt6q" path="res://scenes/Alien.tscn" id="3_j3ydi"]
+[ext_resource type="PackedScene" uid="uid://5ldvaxfos8rc" path="res://scenes/core.tscn" id="4_8ctop"]
+[ext_resource type="Script" path="res://scripts/Cores.gd" id="4_g60d7"]
+[ext_resource type="PackedScene" uid="uid://dvsw8wkytfr8o" path="res://scenes/podium.tscn" id="5_p5x0y"]
+[ext_resource type="PackedScene" uid="uid://cqmuefshbgki2" path="res://scenes/canvas_layer.tscn" id="6_f4pg6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ostpq"]
+sky_top_color = Color(0.980392, 0.807843, 1, 1)
+ground_bottom_color = Color(0.984314, 0.921569, 0.835294, 1)
+
+[sub_resource type="Sky" id="Sky_w5308"]
+sky_material = SubResource("ProceduralSkyMaterial_ostpq")
+
+[sub_resource type="Environment" id="Environment_jaxvi"]
+background_mode = 2
+sky = SubResource("Sky_w5308")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75rsg"]
+albedo_color = Color(0.121569, 0.352941, 0.109804, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lwtr4"]
+material = SubResource("StandardMaterial3D_75rsg")
+size = Vector2(100, 100)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v8mep"]
+points = PackedVector3Array(50.7837, 0.793495, 50.7837, -50.7837, -0.793495, -50.7837, -50.7837, 0.793495, -50.7837, 50.7837, -0.793495, -50.7837, -50.7837, -0.793495, 50.7837, -50.7837, 0.793495, 50.7837, 50.7837, 0.793495, -50.7837, 50.7837, -0.793495, 50.7837)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ky00k"]
+radius = 4.92323
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_18p0y"]
+vertices = PackedVector3Array(2.5, 1.14918, -33.5, 2.5, 1.14918, -44.5, -2.5, 1.14918, -44.5, -2.5, 1.14918, -33.5, -2.5, 1.14918, -22.25, -2.5, 1.14918, -11.25, 2.5, 1.14918, -11.25, 2.5, 1.14918, -22.25, -2.5, 1.14918, 33.25, -2.5, 1.14918, 44.5, 2.5, 1.14918, 44.5, 2.5, 1.14918, 33.25, 2.5, 1.14918, -22.25, 2.5, 1.14918, -33.5, -2.5, 1.14918, -33.5, -2.5, 1.14918, -22.25, -2.5, 1.14918, 22.25, -2.5, 1.14918, 33.25, 2.5, 1.14918, 33.25, 2.5, 1.14918, 22.25, 2.5, 1.14918, 11, 2.5, 1.14918, 0, -2.5, 1.14918, 0, -2.5, 1.14918, 11, -2.5, 1.14918, 11, -2.5, 1.14918, 22.25, 2.5, 1.14918, 22.25, 2.5, 1.14918, 11, -2.5, 1.14918, -11.25, -2.5, 1.14918, 0, 2.5, 1.14918, 0, 2.5, 1.14918, -11.25)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29)]
+agent_height = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ew4l4"]
+size = Vector3(6, 0.935, 90)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o84l8"]
+points = PackedVector3Array(-3.28347, -0.75231, -45.2759, 3.5493, 0.956551, 45.2759, 3.5493, -0.75231, 45.2759, 3.5493, 0.956551, -45.2759, -3.28347, 0.956551, 45.2759, -3.28347, -0.75231, 45.2759, 3.5493, -0.75231, -45.2759, -3.28347, 0.956551, -45.2759)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kd5hw"]
+albedo_color = Color(0.701961, 0.345098, 0.611765, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c56dl"]
+material = SubResource("StandardMaterial3D_kd5hw")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4gfws"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_80k1i"]
+radius = 2.85998
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jaxvi")
+
+[node name="ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ground"]
+mesh = SubResource("PlaneMesh_lwtr4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
+shape = SubResource("ConvexPolygonShape3D_v8mep")
+
+[node name="Gimbal" parent="." instance=ExtResource("1_67q7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.12079, 0)
+
+[node name="Aliens" type="Node3D" parent="." node_paths=PackedStringArray("_target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39554, -37.7333)
+script = ExtResource("2_q27mo")
+_target = NodePath("../corekeeper")
+
+[node name="Alien" parent="Aliens" instance=ExtResource("3_j3ydi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.452006, 6.31775)
+
+[node name="Alien2" parent="Aliens" instance=ExtResource("3_j3ydi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0493793, -0.492484, 9.77258)
+
+[node name="Alien4" parent="Aliens" instance=ExtResource("3_j3ydi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.452006, 2.13426)
+
+[node name="Alien3" parent="Aliens" instance=ExtResource("3_j3ydi")]
+transform = Transform3D(0.999874, 0.0158993, 0, -0.0158993, 0.999874, 0, 0, 0, 1, 0, -0.452006, -1.50813)
+
+[node name="Area3D" type="Area3D" parent="Aliens"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Aliens/Area3D"]
+shape = SubResource("SphereShape3D_ky00k")
+
+[node name="NavigationRegion3D2" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.238906, 0)
+navigation_mesh = SubResource("NavigationMesh_18p0y")
+
+[node name="path_node" type="StaticBody3D" parent="NavigationRegion3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.366682, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D2/path_node"]
+mesh = SubResource("BoxMesh_ew4l4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/path_node"]
+shape = SubResource("ConvexPolygonShape3D_o84l8")
+
+[node name="corekeeper" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33574, 36.935)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="corekeeper"]
+mesh = SubResource("BoxMesh_c56dl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="corekeeper"]
+shape = SubResource("ConvexPolygonShape3D_4gfws")
+
+[node name="Node3D" type="Node3D" parent="corekeeper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515843, 0)
+
+[node name="Cores" type="Node3D" parent="corekeeper/Node3D"]
+script = ExtResource("4_g60d7")
+
+[node name="CORE" parent="corekeeper/Node3D/Cores" instance=ExtResource("4_8ctop")]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, 0, 0.156918, 0.15873)
+
+[node name="CORE2" parent="corekeeper/Node3D/Cores" instance=ExtResource("4_8ctop")]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -0.293704, 0.156918, -0.119461)
+
+[node name="CORE3" parent="corekeeper/Node3D/Cores" instance=ExtResource("4_8ctop")]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -0.00491872, 0.156918, -0.366108)
+
+[node name="CORE4" parent="corekeeper/Node3D/Cores" instance=ExtResource("4_8ctop")]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, 0.324813, 0.156918, -0.0519066)
+
+[node name="Area3D" type="Area3D" parent="corekeeper/Node3D"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="corekeeper/Node3D/Area3D"]
+shape = SubResource("SphereShape3D_80k1i")
+
+[node name="podium" parent="." instance=ExtResource("5_p5x0y")]
+transform = Transform3D(-0.0387715, 0, -0.999248, 0, 1, 0, 0.999248, 0, -0.0387715, 6.77588, 0, -14.5561)
+
+[node name="podium4" parent="." instance=ExtResource("5_p5x0y")]
+transform = Transform3D(-0.0387715, 0, -0.999248, 0, 1, 0, 0.999248, 0, -0.0387715, 6.77588, 0, 6.67593)
+
+[node name="podium5" parent="." instance=ExtResource("5_p5x0y")]
+transform = Transform3D(-0.0387715, 0, -0.999248, 0, 1, 0, 0.999248, 0, -0.0387715, 6.77588, 0, 21.716)
+
+[node name="podium6" parent="." instance=ExtResource("5_p5x0y")]
+transform = Transform3D(0.149535, 0, 0.988756, 0, 1, 0, -0.988756, 0, 0.149535, -7.87407, 0, 21.716)
+
+[node name="podium3" parent="." instance=ExtResource("5_p5x0y")]
+transform = Transform3D(0.00778413, 0, 0.99997, 0, 1, 0, -0.99997, 0, 0.00778413, -6.42299, 0, -3.24258)
+
+[node name="podium2" parent="." instance=ExtResource("5_p5x0y")]
+transform = Transform3D(-0.0387715, 0, -0.999248, 0, 1, 0, 0.999248, 0, -0.0387715, 6.77588, 0, -27.1627)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_f4pg6")]
+
+[connection signal="body_entered" from="Aliens/Area3D" to="Aliens" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="corekeeper/Node3D/Area3D" to="corekeeper/Node3D/Cores" method="_on_area_3d_body_entered"]
