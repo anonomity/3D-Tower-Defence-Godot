@@ -13,10 +13,11 @@ material = SubResource("StandardMaterial3D_qgeu7")
 
 [node name="Alien" type="CharacterBody3D"]
 collision_layer = 2
+wall_min_slide_angle = 0.0
 script = ExtResource("1_ch7q4")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 2.15
+avoidance_enabled = true
 debug_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

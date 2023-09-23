@@ -2,7 +2,7 @@ extends Area3D
 
 var target
 
-var speed = 10
+var speed = 100
 
 var damage = 10
 

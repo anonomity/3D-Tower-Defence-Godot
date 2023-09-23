@@ -4,7 +4,7 @@ extends CharacterBody3D
 
 var target =null
 
-var speed  = 2.0
+var speed  = 5.0
 
 var accel = 10
 
@@ -27,6 +27,14 @@ func _physics_process(delta):
 	velocity = velocity.lerp(direction * speed , accel * delta)
 	
 	move_and_slide()
+
+func _input(event):
+	if Input.is_action_just_pressed("speed_up"):
+		speed = speed * 10
+	if Input.is_action_just_released("speed_up"):
+		speed = 5.0
+	if Input.is_action_just_pressed("stop"):
+		speed = 0
 
 func pickup():
 	core.show()
