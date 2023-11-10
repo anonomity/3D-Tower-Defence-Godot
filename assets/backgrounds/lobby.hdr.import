@@ -3,15 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0ioercv62un7"
-path="res://.godot/imported/lobby.hdr-5bbf3ce3eae340747b89b4311ae5c566.ctex"
+path.bptc="res://.godot/imported/lobby.hdr-5bbf3ce3eae340747b89b4311ae5c566.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/backgrounds/lobby.hdr"
-dest_files=["res://.godot/imported/lobby.hdr-5bbf3ce3eae340747b89b4311ae5c566.ctex"]
+dest_files=["res://.godot/imported/lobby.hdr-5bbf3ce3eae340747b89b4311ae5c566.bptc.ctex"]
 
 [params]
 
